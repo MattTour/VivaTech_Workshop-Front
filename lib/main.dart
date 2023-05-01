@@ -63,7 +63,10 @@ class _MyHomePageState extends State<MyHomePage> {
         page = GeneratorPage();
         break;
       case 1:
-        page = FavoritesPage();
+        page = JeuPage();
+        break;
+      case 2:
+        page = SalonPage();
         break;
       default:
         throw UnimplementedError('no widget for $selectedIndex');
@@ -89,8 +92,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 label: 'Home',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.favorite),
-                label: 'Favorites',
+                icon: Icon(Icons.compass_calibration_outlined),
+                label: 'Salon'
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.gamepad_outlined),
+                label: 'Jeu'
               ),
             ],
             currentIndex: selectedIndex,
@@ -204,6 +211,32 @@ class FavoritesPage extends StatelessWidget {
             leading: Icon(Icons.favorite),
             title: Text(pair.asLowerCase),
           ),
+      ],
+    );
+  }
+}
+
+class SalonPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+
+  return ListView (
+      children: [
+        Text('Page du Salon'),
+        Placeholder()
+      ],
+    );
+  }
+}
+
+class JeuPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+
+    return ListView(
+      children: [
+        Text('Page de Jeu'),
+        Placeholder()
       ],
     );
   }
