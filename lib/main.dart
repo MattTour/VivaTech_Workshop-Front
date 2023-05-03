@@ -63,9 +63,12 @@ class _MyHomePageState extends State<MyHomePage> {
         page = GeneratorPage();
         break;
       case 1:
-        page = JeuPage();
+        page = ProfilePage();
         break;
       case 2:
+        page = JeuPage();
+        break;
+      case 3:
         page = SalonPage();
         break;
       default:
@@ -91,6 +94,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 icon: Icon(Icons.home),
                 label: 'Home',
               ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.face),
+                label: 'Profile'
+                ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.compass_calibration_outlined),
                 label: 'Salon'
@@ -236,6 +243,18 @@ class JeuPage extends StatelessWidget {
     return ListView(
       children: [
         Text('Page de Jeu'),
+        Placeholder()
+      ],
+    );
+  }
+}
+
+class ProfilePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      children: [
+        Text('Page profile'),
         Placeholder()
       ],
     );
