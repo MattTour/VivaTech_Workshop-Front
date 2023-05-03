@@ -75,48 +75,39 @@ class _MyHomePageState extends State<MyHomePage> {
         throw UnimplementedError('no widget for $selectedIndex');
     }
 
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        return Scaffold(
-          body:  Column(
-            children: [
-              Expanded(
-                child: Container(
-                  color: Theme.of(context).colorScheme.primaryContainer,
-                  child: page,
-                ),
+    return LayoutBuilder(builder: (context, constraints) {
+      return Scaffold(
+        body: Column(
+          children: [
+            Expanded(
+              child: Container(
+                color: Theme.of(context).colorScheme.primaryContainer,
+                child: page,
               ),
-            ],
-          ),
-          bottomNavigationBar: BottomNavigationBar(
-            items: [
-              BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: 'Home',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.face),
-                label: 'Profile'
-                ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.compass_calibration_outlined),
-                label: 'Salon'
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.gamepad_outlined),
-                label: 'Jeu'
-              ),
-            ],
-            currentIndex: selectedIndex,
-            onTap: (value) {
-              setState(() {
-                selectedIndex = value;
-              });
-            },
-          ),
-        );
-      }
-    );
+            ),
+          ],
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(icon: Icon(Icons.face), label: 'Profile'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.compass_calibration_outlined), label: 'Salon'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.gamepad_outlined), label: 'Jeu'),
+          ],
+          currentIndex: selectedIndex,
+          onTap: (value) {
+            setState(() {
+              selectedIndex = value;
+            });
+          },
+        ),
+      );
+    });
   }
 }
 
@@ -193,7 +184,6 @@ class BigCard extends StatelessWidget {
   }
 }
 
-
 class FavoritesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -226,12 +216,8 @@ class FavoritesPage extends StatelessWidget {
 class SalonPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
-  return ListView (
-      children: [
-        Text('Page du Salon'),
-        Placeholder()
-      ],
+    return ListView(
+      children: [Text('Page du Salon'), Placeholder()],
     );
   }
 }
@@ -239,12 +225,8 @@ class SalonPage extends StatelessWidget {
 class JeuPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     return ListView(
-      children: [
-        Text('Page de Jeu'),
-        Placeholder()
-      ],
+      children: [Text('Page de Jeu'), Placeholder()],
     );
   }
 }
@@ -289,117 +271,108 @@ class MyCustomFormState extends State<MyCustomForm> {
     // Build a Form widget using the _formKey created above.
     return Form(
       key: _formKey,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          TextFormField(
-            decoration: InputDecoration(
-              labelText: 'Nom *',
-              icon: Icon(Icons.person)
-            ),
-            // The validator receives the text that the user has entered.
-            validator: (value) {
-              if (value == null || value.isEmpty || value.contains('@')) {
-                return 'Empty value or @ caracter detected';
-              }
-              return null;
-            },
-          ),
-          TextFormField(
-            decoration: InputDecoration(
-              labelText: 'Prenom *',
-              icon: Icon(Icons.person)
-            ),
-            // The validator receives the text that the user has entered.
-            validator: (value) {
-              if (value == null || value.isEmpty || value.contains('@')) {
-                return 'Empty value or @ caracter detected';
-              }
-              return null;
-            },
-          ),
-          TextFormField(
-            decoration: InputDecoration(
-              labelText: 'Age',
-              icon: Icon(Icons.person)
-            ),
-            // The validator receives the text that the user has entered.
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter some text';
-              }
-              return null;
-            },
-          ),
-          TextFormField(
-            decoration: InputDecoration(
-              labelText: 'email *',
-              icon: Icon(Icons.mail)
-            ),
-            // The validator receives the text that the user has entered.
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter some text';
-              }
-              return null;
-            },
-          ),
-          TextFormField(
-            decoration: InputDecoration(
-              labelText: 'Numéro de téléphone *',
-              icon: Icon(Icons.mobile_friendly_outlined)
-            ),
-            // The validator receives the text that the user has entered.
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter some text';
-              }
-              return null;
-            },
-          ),
-          TextFormField(
-            decoration: InputDecoration(
-              labelText: 'Dernier diplôme *',
-              icon: Icon(Icons.school_outlined)
-            ),
-            // The validator receives the text that the user has entered.
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter some text';
-              }
-              return null;
-            },
-          ),
-          TextFormField(
-            decoration: InputDecoration(
-              labelText: 'Poste recherché *',
-              icon: Icon(Icons.home_max_outlined)
-            ),
-            // The validator receives the text that the user has entered.
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter some text';
-              }
-              return null;
-            },
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16.0),
-            child: ElevatedButton(
-              onPressed: () {
-                // Validate returns true if the form is valid, or false otherwise.
-                if (_formKey.currentState!.validate()) {
-                  // If the form is valid, display a snackbar. In the real world,
-                  // you'd often call a server or save the information in a database.
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Processing Data')),
-                  );
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            TextFormField(
+              decoration:
+                  InputDecoration(labelText: 'Nom *', icon: Icon(Icons.person)),
+              // The validator receives the text that the user has entered.
+              validator: (value) {
+                if (value == null || value.isEmpty || value.contains('@')) {
+                  return 'Empty value or @ caracter detected';
                 }
+                return null;
               },
-              child: const Text('Submit'),
             ),
-          ),
-        ],
+            TextFormField(
+              decoration: InputDecoration(
+                  labelText: 'Prenom *', icon: Icon(Icons.person)),
+              // The validator receives the text that the user has entered.
+              validator: (value) {
+                if (value == null || value.isEmpty || value.contains('@')) {
+                  return 'Empty value or @ caracter detected';
+                }
+                return null;
+              },
+            ),
+            TextFormField(
+              decoration:
+                  InputDecoration(labelText: 'Age', icon: Icon(Icons.person)),
+              // The validator receives the text that the user has entered.
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please enter some text';
+                }
+                return null;
+              },
+            ),
+            TextFormField(
+              decoration:
+                  InputDecoration(labelText: 'email *', icon: Icon(Icons.mail)),
+              // The validator receives the text that the user has entered.
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please enter some text';
+                }
+                return null;
+              },
+            ),
+            TextFormField(
+              decoration: InputDecoration(
+                  labelText: 'Numéro de téléphone *',
+                  icon: Icon(Icons.mobile_friendly_outlined)),
+              // The validator receives the text that the user has entered.
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please enter some text';
+                }
+                return null;
+              },
+            ),
+            TextFormField(
+              decoration: InputDecoration(
+                  labelText: 'Dernier diplôme *',
+                  icon: Icon(Icons.school_outlined)),
+              // The validator receives the text that the user has entered.
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please enter some text';
+                }
+                return null;
+              },
+            ),
+            TextFormField(
+              decoration: InputDecoration(
+                  labelText: 'Poste recherché *',
+                  icon: Icon(Icons.home_max_outlined)),
+              // The validator receives the text that the user has entered.
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please enter some text';
+                }
+                return null;
+              },
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16.0),
+              child: ElevatedButton(
+                onPressed: () {
+                  // Validate returns true if the form is valid, or false otherwise.
+                  if (_formKey.currentState!.validate()) {
+                    // If the form is valid, display a snackbar. In the real world,
+                    // you'd often call a server or save the information in a database.
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('Processing Data')),
+                    );
+                  }
+                },
+                child: const Text('Submit'),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
