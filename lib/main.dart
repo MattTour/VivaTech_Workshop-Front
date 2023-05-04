@@ -67,10 +67,10 @@ class _MyHomePageState extends State<MyHomePage> {
         page = ProfilePage();
         break;
       case 2:
-        page = JeuPage();
+        page = SalonPage();
         break;
       case 3:
-        page = SalonPage();
+        page = JeuPage();
         break;
       default:
         throw UnimplementedError('no widget for $selectedIndex');
