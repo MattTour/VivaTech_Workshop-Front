@@ -23,3 +23,15 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  fonts:
+    - family: MuseoSans
+      fonts:
+        - asset: fonts/MuseoSans_500.otf
+        - asset: fonts/MuseoSans_700.otf
+          weight: 700
+        - asset: fonts/MuseoSans_900.otf
+          weight: 900
+  assets:
+    - assets/Logo_vivatech.png
+    - assets/lead-the-future.jpg
+    - assets/startup-paradise.jpg
