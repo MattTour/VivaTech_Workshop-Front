@@ -8,8 +8,8 @@ import 'package:flutter/painting.dart';
 
 Future<List<Stand>> fetchStand(http.Client client) async {
   final response = await client
-  //Changer le numero du port en 5000 si besoin
-      .get(Uri.parse('http://localhost:5001/stand'));
+      //Changer le numero du port en 5000 si besoin
+      .get(Uri.parse('http://localhost:5000/stand'));
 
   // Use the compute function to run parsePhotos in a separate isolate.
   return compute(parsePhotos, response.body);
@@ -32,28 +32,26 @@ class Stand {
   final String email;
   final String telephone;
 
-  const Stand({
-    required this.id,
-    required this.nom,
-    required this.description,
-    required this.localisation,
-    required this.nom_Entreprise,
-    required this.categorie, 
-    required this.email,
-    required this.telephone
-  });
+  const Stand(
+      {required this.id,
+      required this.nom,
+      required this.description,
+      required this.localisation,
+      required this.nom_Entreprise,
+      required this.categorie,
+      required this.email,
+      required this.telephone});
 
   factory Stand.fromJson(Map<String, dynamic> json) {
     return Stand(
-      id: json['id'] as int,
-      nom: json['Nom'] as String,
-      description: json['Description'] as String,
-      localisation: json['Localisation'] as String,
-      nom_Entreprise: json['Nom_Entreprise'] as String,
-      categorie: json['Catégorie'] as String, 
-      email: json['Email'] as String, 
-      telephone: json['Telephone'] as String
-    );
+        id: json['id'] as int,
+        nom: json['Nom'] as String,
+        description: json['Description'] as String,
+        localisation: json['Localisation'] as String,
+        nom_Entreprise: json['Nom_Entreprise'] as String,
+        categorie: json['Catégorie'] as String,
+        email: json['Email'] as String,
+        telephone: json['Telephone'] as String);
   }
 }
 
@@ -105,7 +103,7 @@ class PlacePage extends StatelessWidget {
 class StandList extends StatelessWidget {
   const StandList({super.key, required this.stand});
 
-  final List<Stand> stand ;
+  final List<Stand> stand;
 
   @override
   Widget build(BuildContext context) {
@@ -116,17 +114,14 @@ class StandList extends StatelessWidget {
       itemCount: stand.length,
       itemBuilder: (context, index) {
         return Card(
-          child: ListView(
-          children: [
+          child: ListView(children: [
             Text(stand[index].nom,
-            style: TextStyle(fontWeight: FontWeight.bold)
-      ),
+                style: TextStyle(fontWeight: FontWeight.bold)),
             Text(stand[index].description),
             Text(stand[index].email),
             Text(stand[index].telephone),
             Text(stand[index].categorie)
-          ]
-          ),
+          ]),
         );
       },
     );

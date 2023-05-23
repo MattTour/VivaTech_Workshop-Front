@@ -41,106 +41,53 @@ class MyCustomFormState extends State<MyCustomForm> {
     return Form(
       key: _formKey,
       child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            TextFormField(
-              decoration:
-                  InputDecoration(labelText: 'Nom *', icon: Icon(Icons.person)),
-              // The validator receives the text that the user has entered.
-              validator: (value) {
-                if (value == null || value.isEmpty || value.contains('@')) {
-                  return 'Empty value or @ caracter detected';
-                }
-                return null;
-              },
-            ),
-            TextFormField(
-              decoration: InputDecoration(
-                  labelText: 'Prenom *', icon: Icon(Icons.person)),
-              // The validator receives the text that the user has entered.
-              validator: (value) {
-                if (value == null || value.isEmpty || value.contains('@')) {
-                  return 'Empty value or @ caracter detected';
-                }
-                return null;
-              },
-            ),
-            TextFormField(
-              decoration:
-                  InputDecoration(labelText: 'Age', icon: Icon(Icons.person)),
-              // The validator receives the text that the user has entered.
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter some text';
-                }
-                return null;
-              },
-            ),
-            TextFormField(
-              decoration:
-                  InputDecoration(labelText: 'email *', icon: Icon(Icons.mail)),
-              // The validator receives the text that the user has entered.
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter some text';
-                }
-                return null;
-              },
-            ),
-            TextFormField(
-              decoration: InputDecoration(
-                  labelText: 'Numéro de téléphone *',
-                  icon: Icon(Icons.mobile_friendly_outlined)),
-              // The validator receives the text that the user has entered.
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter some text';
-                }
-                return null;
-              },
-            ),
-            TextFormField(
-              decoration: InputDecoration(
-                  labelText: 'Dernier diplôme *',
-                  icon: Icon(Icons.school_outlined)),
-              // The validator receives the text that the user has entered.
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter some text';
-                }
-                return null;
-              },
-            ),
-            TextFormField(
-              decoration: InputDecoration(
-                  labelText: 'Poste recherché *',
-                  icon: Icon(Icons.home_max_outlined)),
-              // The validator receives the text that the user has entered.
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter some text';
-                }
-                return null;
-              },
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16.0),
-              child: ElevatedButton(
-                onPressed: () {
-                  // Validate returns true if the form is valid, or false otherwise.
-                  if (_formKey.currentState!.validate()) {
-                    // If the form is valid, display a snackbar. In the real world,
-                    // you'd often call a server or save the information in a database.
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Processing Data')),
-                    );
+        child: Padding(
+          padding: EdgeInsets.fromLTRB(40, 10, 50, 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              TextFormField(
+                decoration: InputDecoration(
+                    labelText: 'Dernier diplôme *',
+                    icon: Icon(Icons.school_outlined)),
+                // The validator receives the text that the user has entered.
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter some text';
                   }
+                  return null;
                 },
-                child: const Text('Submit'),
               ),
-            ),
-          ],
+              TextFormField(
+                decoration: InputDecoration(
+                    labelText: 'Poste recherché *',
+                    icon: Icon(Icons.home_max_outlined)),
+                // The validator receives the text that the user has entered.
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter some text';
+                  }
+                  return null;
+                },
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 16.0),
+                child: ElevatedButton(
+                  onPressed: () {
+                    // Validate returns true if the form is valid, or false otherwise.
+                    if (_formKey.currentState!.validate()) {
+                      // If the form is valid, display a snackbar. In the real world,
+                      // you'd often call a server or save the information in a database.
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text('Processing Data')),
+                      );
+                    }
+                  },
+                  child: const Text('Submit'),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
