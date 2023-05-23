@@ -1,25 +1,11 @@
 import 'dart:async';
 import 'dart:convert';
-
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-Future<List<Stand>> fetchStand(http.Client client) async {
-  final response = await client
-  //Changer le numero du port en 5000 si besoin
-      .get(Uri.parse('http://localhost:5001/stand'));
 
-  // Use the compute function to run parsePhotos in a separate isolate.
-  return compute(parsePhotos, response.body);
-}
-
-// A function that converts a response body into a List<Photo>.
-List<Stand> parsePhotos(String responseBody) {
-  final parsed = jsonDecode(responseBody).cast<Map<String, dynamic>>();
-
-  return parsed.map<Stand>((json) => Stand.fromJson(json)).toList();
-}
+import 'package:flutter/material.dart';
+import 'package:vivatech_workshop/pages/jeu_page.dart';
 
 class Stand {
   final int id;
@@ -56,33 +42,34 @@ class Stand {
   }
 }
 
-class SalonPage extends StatelessWidget {
-  const SalonPage({super.key});
+Future<List<Stand>> fetchStand(http.Client client, value) async {
+  final response = await client
+  //Changer le numero du port en 5000 si besoin
+      .get(Uri.parse('http://localhost:5001/stand/categorie/$value'));
 
-  @override
-  Widget build(BuildContext context) {
-    const appTitle = 'Liste des stands';
-
-    return const MaterialApp(
-      title: appTitle,
-      home: PlacePage(title: appTitle),
-    );
-  }
+  // Use the compute function to run parsePhotos in a separate isolate.
+  return compute(parseStand, response.body);
 }
 
-class PlacePage extends StatelessWidget {
-  const PlacePage({super.key, required this.title});
+// A function that converts a response body into a List<Photo>.
+List<Stand> parseStand(String responseBody) {
+  final parsed = jsonDecode(responseBody).cast<Map<String, dynamic>>();
 
-  final String title;
+  return parsed.map<Stand>((json) => Stand.fromJson(json)).toList();
+}
 
+
+class SecondPage extends StatelessWidget {
+  final Data data;
+  SecondPage({required this.data});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: Text(data.value),
       ),
       body: FutureBuilder<List<Stand>>(
-        future: fetchStand(http.Client()),
+        future: fetchStand(http.Client(), data.value),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return const Center(
