@@ -24,26 +24,13 @@ class MyAppVivaTech extends StatelessWidget {
         theme: ThemeData(
           fontFamily: 'MuseoSans',
           useMaterial3: true,
-colorScheme: ColorScheme.fromSwatch().copyWith(
-  primary: const Color(0xFF5508A0),
-).copyWith(
-  primary: const Color(0xFF5508A0),
-  secondary: const Color(0xFFFF0081),
-  secondaryVariant: const Color(0xFFFF00E4),
-).copyWith(
-  surface: const Color(0xFFF15700),
-  background: const Color(0xFFFFFF00),
-).copyWith(
-  onBackground: Color.fromARGB(255, 124, 143, 143),
-  onSurface: Color.fromARGB(255, 134, 134, 134),
-),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         ),
         home: MyHomePage(),
       ),
     );
   }
 }
-
 class MyAppState extends ChangeNotifier {}
 
 class MyHomePage extends StatefulWidget {
