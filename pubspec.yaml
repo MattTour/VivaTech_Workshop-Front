@@ -33,8 +33,4 @@ flutter:
         - asset: fonts/MuseoSans_900.otf
           weight: 900
   assets:
-    - assets/Logo_vivatech.png
-    - assets/lead-the-future.jpg
-    - assets/startup-paradise.jpg
-    - assets/rickrollqr.png
-    - assets/gradient_vivatech.png
+    - assets/
