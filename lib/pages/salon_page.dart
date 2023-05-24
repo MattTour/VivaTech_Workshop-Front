@@ -8,7 +8,7 @@ import 'package:http/http.dart' as http;
 Future<List<Stand>> fetchStand(http.Client client) async {
   final response = await client
       //Changer le numero du port en 5000 si besoin
-      .get(Uri.parse('http://localhost:5000/stand'));
+      .get(Uri.parse('http://10.0.2.2:5000/stand'));
 
   // Use the compute function to run parsePhotos in a separate isolate.
   return compute(parsePhotos, response.body);
@@ -77,7 +77,11 @@ class PlacePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: const Text('Liste des stands'),
+        flexibleSpace: Image(
+          image: AssetImage('assets/gradient_vivatech.png'),
+          fit: BoxFit.cover,
+        ),
       ),
       body: FutureBuilder<List<Stand>>(
         future: fetchStand(http.Client()),
