@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:convert';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -9,7 +8,7 @@ import 'package:flutter/painting.dart';
 Future<List<Stand>> fetchStand(http.Client client) async {
   final response = await client
   //Changer le numero du port en 5000 si besoin
-      .get(Uri.parse('http://localhost:5001/stand'));
+      .get(Uri.parse('http://localhost:5000/stand'));
 
   // Use the compute function to run parsePhotos in a separate isolate.
   return compute(parsePhotos, response.body);
@@ -109,26 +108,80 @@ class StandList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
+   return GridView.builder(
+  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+    crossAxisCount: 2,
+    childAspectRatio: 1.4,
+  ),
+  itemCount: stand.length,
+  itemBuilder: (context, index) {
+    return Container(
+      margin: const EdgeInsets.all(8.0),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(5.0),
+        border: Border.all(color: Color.fromARGB(255, 0, 0, 0)),
+        color: Color.fromARGB(255, 205, 198, 198),
       ),
-      itemCount: stand.length,
-      itemBuilder: (context, index) {
-        return Card(
-          child: ListView(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(stand[index].nom,
-            style: TextStyle(fontWeight: FontWeight.bold)
+            Text(
+              stand[index].nom,
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+            ),
+            Divider(),
+            Text(
+              'Description',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+            ),
+            Text(
+              stand[index].description,
+              style: TextStyle(color: Colors.black, fontSize: 12),
+            ),
+            SizedBox(height: 4.0),
+            Text(
+              'Catégorie',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+            ),
+            Text(
+              stand[index].categorie,
+              style: TextStyle(color: Colors.black, fontSize: 12),
+            ),
+            SizedBox(height: 4.0),
+            Divider(),
+            Text(
+              'Contact',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Email: ${stand[index].email}',
+                  style: TextStyle(color: Colors.black, fontSize: 12),
+                ),
+                SizedBox(height: 4.0),
+                Text(
+                  'Téléphone: ${stand[index].telephone}',
+                  style: TextStyle(color: Colors.black, fontSize: 12),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
-            Text(stand[index].description),
-            Text(stand[index].email),
-            Text(stand[index].telephone),
-            Text(stand[index].categorie)
-          ]
-          ),
-        );
-      },
     );
+  },
+);
+
+
+
+
+
+
+
+
   }
 }
