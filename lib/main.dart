@@ -44,9 +44,7 @@ colorScheme: ColorScheme.fromSwatch().copyWith(
   }
 }
 
-class MyAppState extends ChangeNotifier {
-
-}
+class MyAppState extends ChangeNotifier {}
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -89,28 +87,39 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ],
         ),
-        bottomNavigationBar: BottomNavigationBar(
-          items: [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.face), 
-              label: 'Profile'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.compass_calibration_outlined), 
-                label: 'Salon'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.gamepad_outlined), 
-                label: 'Jeu'),
-          ],
-          currentIndex: selectedIndex,
-          onTap: (value) {
-            setState(() {
-              selectedIndex = value;
-            });
-          },
+        bottomNavigationBar: Theme(
+          data: Theme.of(context).copyWith(
+            canvasColor: Color.fromARGB(255, 255, 255, 255),
+          ),
+          child: BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
+            items: [
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.home,
+                  color: Color.fromARGB(255, 0, 0, 0),
+                ),
+                label: 'Home',
+              ),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.face, color: Color.fromARGB(255, 0, 0, 0)),
+                  label: 'Profile'),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.compass_calibration_outlined,
+                      color: Color.fromARGB(255, 0, 0, 0)),
+                  label: 'Salon'),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.gamepad_outlined,
+                      color: Color.fromARGB(255, 0, 0, 0)),
+                  label: 'Jeu'),
+            ],
+            currentIndex: selectedIndex,
+            onTap: (value) {
+              setState(() {
+                selectedIndex = value;
+              });
+            },
+          ),
         ),
       );
     });
