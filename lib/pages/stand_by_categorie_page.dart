@@ -45,7 +45,7 @@ class Stand {
 Future<List<Stand>> fetchStand(http.Client client, value) async {
   final response = await client
   //Changer le numero du port en 5000 si besoin
-      .get(Uri.parse('http://localhost:5001/stand/categorie/$value'));
+      .get(Uri.parse('http://vivatech.pari0039.mds-paris.yt/stand/categorie/$value'));
 
   // Use the compute function to run parsePhotos in a separate isolate.
   return compute(parseStand, response.body);
