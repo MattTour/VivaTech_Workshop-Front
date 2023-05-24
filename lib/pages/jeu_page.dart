@@ -28,7 +28,6 @@ final data = Data(
                           data: Data(value: 'Robotique'),
                   )),
                 );
-                  // Validate returns true if the form is valid, or false otherwise.
                 },
                 child: const Text('Robotique'),
               ),
@@ -41,7 +40,6 @@ final data = Data(
                           data: Data(value: 'Embarquer'),
                   )),
                 );
-                  // Validate returns true if the form is valid, or false otherwise.
                 },
                 child: const Text('Embarquer'),
               ),
@@ -54,7 +52,6 @@ final data = Data(
                           data: Data(value: 'IA'),
                   )),
                 );
-                  // Validate returns true if the form is valid, or false otherwise.
                 },
                 child: const Text('Intelligence Artificielle'),
               )
