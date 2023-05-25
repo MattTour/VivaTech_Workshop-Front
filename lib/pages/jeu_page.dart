@@ -25,11 +25,11 @@ final data = Data(
                     context,
                       MaterialPageRoute(
                         builder: (context) => SecondPage(
-                          data: Data(value: 'Robotique'),
+                          data: Data(value: 'consulting'),
                   )),
                 );
                 },
-                child: const Text('Robotique'),
+                child: const Text('Consulting'),
               ),
               ElevatedButton(
                 onPressed: () {

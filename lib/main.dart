@@ -4,6 +4,9 @@ import 'package:vivatech_workshop/pages/home_page.dart';
 import 'package:vivatech_workshop/pages/jeu_page.dart';
 import 'package:vivatech_workshop/pages/profile_page.dart';
 import 'package:vivatech_workshop/pages/salon_page.dart';
+import 'package:flutter/material.dart';
+
+
 
 void main() {
   runApp(MyAppVivaTech());
@@ -28,7 +31,6 @@ class MyAppVivaTech extends StatelessWidget {
     );
   }
 }
-
 class MyAppState extends ChangeNotifier {}
 
 class MyHomePage extends StatefulWidget {
@@ -109,4 +111,5 @@ class _MyHomePageState extends State<MyHomePage> {
       );
     });
   }
+  
 }
