@@ -43,8 +43,8 @@ class Stand {
 }
 
 Future<List<Stand>> fetchStand(http.Client client, value) async {
-  final response = await client
-      .get(Uri.parse('http://vivatech.pari0039.mds-paris.yt/stand/categorie/$value'));
+  final response = await client.get(Uri.parse(
+      'http://vivatech.pari0039.mds-paris.yt/stand/categorie/$value'));
 
   // Use the compute function to run parsePhotos in a separate isolate.
   return compute(parseStand, response.body);
@@ -63,7 +63,7 @@ class SecondPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(data.value),
+        title: Text(style: TextStyle(color: Color(0xFFFFFFFF)), data.value),
         flexibleSpace: Image(
           image: AssetImage('assets/gradient_vivatech.png'),
           fit: BoxFit.cover,
@@ -137,7 +137,7 @@ class _StandListCatState extends State<StandListCat> {
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 1,
         mainAxisSpacing: 0,
-        mainAxisExtent: 140,
+        mainAxisExtent: 200,
       ),
       itemCount: widget.stand.length,
       itemBuilder: (context, index) {
@@ -145,7 +145,11 @@ class _StandListCatState extends State<StandListCat> {
           child: Column(children: [
             Text(widget.stand[index].nom,
                 style: TextStyle(fontWeight: FontWeight.bold)),
-            Text(widget.stand[index].description),
+            Text(
+              widget.stand[index].description.length <= 100
+                  ? widget.stand[index].description
+                  : '${widget.stand[index].description.substring(0, 100)}...',
+            ),
             Text('Stand :'),
             Text(widget.stand[index].localisation,
                 style: TextStyle(fontWeight: FontWeight.bold)),
