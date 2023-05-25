@@ -108,80 +108,83 @@ class StandList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   return GridView.builder(
-  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-    crossAxisCount: 2,
-    childAspectRatio: 1.4,
-  ),
-  itemCount: stand.length,
-  itemBuilder: (context, index) {
-    return Container(
-      margin: const EdgeInsets.all(8.0),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(5.0),
-        border: Border.all(color: Color.fromARGB(255, 0, 0, 0)),
-        color: Color.fromARGB(255, 205, 198, 198),
+    return GridView.builder(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        childAspectRatio: 1.4,
+        mainAxisExtent: 200,
       ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              stand[index].nom,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
-            ),
-            Divider(),
-            Text(
-              'Description',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
-            ),
-            Text(
-              stand[index].description,
-              style: TextStyle(color: Colors.black, fontSize: 12),
-            ),
-            SizedBox(height: 4.0),
-            Text(
-              'Catégorie',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
-            ),
-            Text(
-              stand[index].categorie,
-              style: TextStyle(color: Colors.black, fontSize: 12),
-            ),
-            SizedBox(height: 4.0),
-            Divider(),
-            Text(
-              'Contact',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
-            ),
-            Column(
+      itemCount: stand.length,
+      itemBuilder: (context, index) {
+        return Container(
+          margin: const EdgeInsets.all(8.0),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(5.0),
+            border: Border.all(color: Color.fromARGB(255, 0, 0, 0)),
+            color: Color.fromARGB(255, 205, 198, 198),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Email: ${stand[index].email}',
+                  stand[index].nom.length <= 20
+                      ? stand[index].nom
+                      : '${stand[index].nom.substring(0, 20)}...',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+                ),
+                Divider(),
+                Text(
+                  'Description',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+                ),
+                Text(
+                  stand[index].description.length <= 20
+                      ? stand[index].description
+                      : '${stand[index].description.substring(0, 20)}...',
                   style: TextStyle(color: Colors.black, fontSize: 12),
                 ),
                 SizedBox(height: 4.0),
                 Text(
-                  'Téléphone: ${stand[index].telephone}',
+                  'Catégorie',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+                ),
+                Text(
+                  stand[index].categorie.length <= 20
+                      ? stand[index].categorie
+                      : '${stand[index].categorie.substring(0, 20)}...',
                   style: TextStyle(color: Colors.black, fontSize: 12),
+                ),
+                SizedBox(height: 4.0),
+                Divider(),
+                Text(
+                  'Contact',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      stand[index].email.length <= 12
+                          ? 'Email: ${stand[index].email}'
+                          : 'Email: ${stand[index].email.substring(0, 12)}...',
+                      style: TextStyle(color: Colors.black, fontSize: 12),
+                    ),
+                    SizedBox(height: 4.0),
+                    Text(
+                      stand[index].telephone.length <= 10
+                          ? 'Téléphone: ${stand[index].telephone}'
+                          : 'Téléphone: ${stand[index].telephone.substring(0, 10)}',
+                      style: TextStyle(color: Colors.black, fontSize: 12),
+                    ),
+                  ],
                 ),
               ],
             ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
-  },
-);
-
-
-
-
-
-
-
-
   }
 }
