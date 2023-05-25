@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 Future<List<Stand>> fetchStand(http.Client client) async {
   final response = await client
       //Changer le numero du port en 5000 si besoin
-      .get(Uri.parse('http://localhost:5000/stand'));
+      .get(Uri.parse('http://vivatech.pari0039.mds-paris.yt/stand/'));
 
   // Use the compute function to run parsePhotos in a separate isolate.
   return compute(parsePhotos, response.body);
