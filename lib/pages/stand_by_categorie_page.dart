@@ -130,13 +130,15 @@ class StandListCat extends StatefulWidget {
 }
 
 class _StandListCatState extends State<StandListCat> {
+  int visitCount = 0;
+
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 1,
         mainAxisSpacing: 0,
-        mainAxisExtent: 100,
+        mainAxisExtent: 140,
       ),
       itemCount: widget.stand.length,
       itemBuilder: (context, index) {
@@ -145,20 +147,31 @@ class _StandListCatState extends State<StandListCat> {
             Text(widget.stand[index].nom,
                 style: TextStyle(fontWeight: FontWeight.bold)),
             Text(widget.stand[index].description),
-            Container(
-              color: widget.stand[index].status
-                  ? Color(0xFFFF1A1A)
-                  : Color(0xFF1AD1FF),
-              child: ElevatedButton(
-                onPressed: () {
-                  setState(() {
+            Text('Stand :'),
+            Text(widget.stand[index].localisation,
+                style: TextStyle(fontWeight: FontWeight.bold)),
+            ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  if (widget.stand[index].status != true) {
+                    visitCount += 1;
                     widget.stand[index].status = true;
-                  });
-                  print(widget.stand[index].status);
-                },
-                style: ElevatedButton.styleFrom(
-                    foregroundColor: Color(0xffffffff)),
-                child: const Text('Visiter'),
+                  }
+                });
+              },
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: widget.stand.length == visitCount
+                      ? Color(0xFF74FF3D)
+                      : widget.stand[index].status
+                          ? Color(0xFF1AD1FF)
+                          : Color(0xFFFF1A1A),
+                  foregroundColor: Color(0xffffffff)),
+              child: Text(
+                widget.stand.length == visitCount
+                    ? 'Bravo !'
+                    : widget.stand[index].status
+                        ? 'Visité !'
+                        : 'Visiter',
               ),
             ),
           ]),
