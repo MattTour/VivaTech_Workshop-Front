@@ -63,7 +63,7 @@ class SecondPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(data.value),
+        title: Text(style: TextStyle(color: Color(0xFFFFFFFF)), data.value),
         flexibleSpace: Image(
           image: AssetImage('assets/gradient_vivatech.png'),
           fit: BoxFit.cover,

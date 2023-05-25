@@ -7,7 +7,7 @@ class GeneratorPage extends StatelessWidget {
         child: Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
-            image: AssetImage("assets/test.png"), fit: BoxFit.cover),
+            image: AssetImage("assets/background.png"), fit: BoxFit.cover),
       ),
       child: SingleChildScrollView(
         child: SizedBox(
