@@ -202,7 +202,7 @@ class JeuPage extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(height: 8),  
+              SizedBox(height: 8),
               Row(
                 children: [
                   Expanded(
