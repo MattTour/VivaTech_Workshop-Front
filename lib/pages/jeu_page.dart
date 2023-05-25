@@ -59,7 +59,7 @@ class JeuPage extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                               builder: (context) => SecondPage(
-                                data: Data(value: 'Energy'),
+                                data: Data(value: 'Sante'),
                               ),
                             ),
                           );
@@ -74,7 +74,7 @@ class JeuPage extends StatelessWidget {
                           padding: EdgeInsets.all(16),
                         ),
                         child: Text(
-                          'Energy',
+                          'Santé',
                           style: TextStyle(fontSize: 16),
                         ),
                       ),
@@ -93,7 +93,7 @@ class JeuPage extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                               builder: (context) => SecondPage(
-                                data: Data(value: 'Food'),
+                                data: Data(value: 'Retail'),
                               ),
                             ),
                           );
@@ -107,7 +107,7 @@ class JeuPage extends StatelessWidget {
                           padding: EdgeInsets.all(16),
                         ),
                         child: Text(
-                          'Food',
+                          'E-Commerce',
                           style: TextStyle(fontSize: 16),
                         ),
                       ),
@@ -120,7 +120,7 @@ class JeuPage extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                               builder: (context) => SecondPage(
-                                data: Data(value: 'Information technologies'),
+                                data: Data(value: 'Information'),
                               ),
                             ),
                           );
@@ -153,7 +153,7 @@ class JeuPage extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                               builder: (context) => SecondPage(
-                                data: Data(value: 'Software Development/Cloud'),
+                                data: Data(value: 'Cloud'),
                               ),
                             ),
                           );
@@ -180,7 +180,7 @@ class JeuPage extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                               builder: (context) => SecondPage(
-                                data: Data(value: 'Luxury/Fashion/Beauty'),
+                                data: Data(value: 'Energie'),
                               ),
                             ),
                           );
@@ -194,7 +194,7 @@ class JeuPage extends StatelessWidget {
                           padding: EdgeInsets.all(16),
                         ),
                         child: Text(
-                          'Luxury/Fashion/Beauty',
+                          'Energie',
                           style: TextStyle(fontSize: 16),
                         ),
                       ),
@@ -212,7 +212,7 @@ class JeuPage extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                             builder: (context) => SecondPage(
-                              data: Data(value: 'Media/Entertainment/Culture'),
+                              data: Data(value: 'Media'),
                             ),
                           ),
                         );
