@@ -7,7 +7,11 @@ class ProfilePage extends StatelessWidget {
       title: 'Formulaire',
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Créé votre CV'),
+          title: const Text('Profil'),
+          flexibleSpace: Image(
+            image: AssetImage('assets/gradient_vivatech.png'),
+            fit: BoxFit.cover,
+          ),
         ),
         body: const MyCustomForm(),
       ),
@@ -42,10 +46,80 @@ class MyCustomFormState extends State<MyCustomForm> {
       key: _formKey,
       child: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.fromLTRB(40, 10, 50, 20),
+          padding: EdgeInsets.fromLTRB(30, 30, 40, 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Padding(
+                padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
+                child: Text(
+                  "Nom : Ymerej",
+                  textAlign: TextAlign.justify,
+                  style: TextStyle(fontWeight: FontWeight.w700),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
+                child: Text(
+                  "Prénom : Jérémy",
+                  textAlign: TextAlign.justify,
+                  style: TextStyle(fontWeight: FontWeight.w700),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
+                child: Text(
+                  "Mail : jeremymerej@gmail.com",
+                  textAlign: TextAlign.justify,
+                  style: TextStyle(fontWeight: FontWeight.w700),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
+                child: Text(
+                  "Téléphone : 06.09.06.09.06",
+                  textAlign: TextAlign.justify,
+                  style: TextStyle(fontWeight: FontWeight.w700),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
+                child: Text(
+                  "Dernier diplôme : A renseigner",
+                  textAlign: TextAlign.justify,
+                  style: TextStyle(fontWeight: FontWeight.w700),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                child: Text(
+                  "Poste recherché : A renseigner",
+                  textAlign: TextAlign.justify,
+                  style: TextStyle(fontWeight: FontWeight.w700),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(0, 0, 0, 30),
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xFFa1009b), // Background color
+                  ),
+                  child: const Text('Partager votre CV'),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(0, 0, 0, 30),
+                child: Text(
+                  "Votre pass Vivatech :",
+                  textAlign: TextAlign.justify,
+                  style: TextStyle(fontWeight: FontWeight.w700),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(40, 0, 40, 20),
+                child: Image.asset('assets/rickrollqr.png'),
+              ),
               TextFormField(
                 decoration: InputDecoration(
                     labelText: 'Dernier diplôme *',
@@ -83,6 +157,9 @@ class MyCustomFormState extends State<MyCustomForm> {
                       );
                     }
                   },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xFFa1009b), // Background color
+                  ),
                   child: const Text('Submit'),
                 ),
               ),
